@@ -1,0 +1,106 @@
+body {
+  padding-top: 15vh;
+  font-family: "Walter Turncoat", cursive !important ;
+}
+h2 {
+  font-weight: bolder !important;
+}
+
+#my-modal h2 {
+  color: aliceblue;
+}
+#mynav {
+  padding: 1% 5%;
+  font-size: 1.5em;
+}
+#mynav > a {
+  font-size: 1.4em;
+}
+label {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: aliceblue;
+}
+th,
+#my-btn,
+#my-btn-cancel {
+  font-size: 1.2em;
+}
+
+#add-btn {
+  cursor: pointer;
+  margin-right: 0 !important;
+}
+
+#add-btn {
+  cursor: pointer;
+  margin-right: 0 !important;
+}
+
+.ml-auto a:first-child {
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  padding: 0 10px;
+  border-radius: 7px;
+  font-size: 1.2em !important;
+}
+.ml-auto a:first-child:hover {
+  border: 3px solid rgba(255, 255, 255, 0.993);
+}
+
+.ml-auto a:last-child {
+  font-size: 1.6em !important;
+  display: none;
+}
+
+#edit-delete {
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+td,
+thead {
+  text-align: center;
+}
+#td-task{
+  text-align: left;
+}
+td:last-child i:first-child {
+  color: rgb(248, 186, 71);
+  margin-right: 5px;
+}
+
+td:last-child i:last-child {
+  color: tomato;
+}
+tbody i:hover {
+  cursor: pointer;
+}
+
+/* Modal */
+#my-modal {
+  width: 100%;
+  background-color: #323330;
+  position: fixed;
+  top: 0;
+  padding-top: 100px;
+  padding-bottom: 10px;
+  display: none;
+}
+
+/* Media */
+
+@media only screen and (max-width: 600px) {
+  .ml-auto a:first-child {
+    display: none;
+  }
+
+  .ml-auto a:last-child {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 492px) {
+  td:last-child i:first-child {
+    margin-right: 0;
+  }
+}
