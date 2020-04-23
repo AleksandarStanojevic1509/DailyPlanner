@@ -1,5 +1,6 @@
 // DOM
 let tbody = document.querySelector("tbody");
+let form = document.querySelector('form')
 
 //create db
 export const createDB = (dbName, tableName) => {
@@ -24,9 +25,10 @@ export const sendData = (table, data) => {
 };
 
 // get data from db
-export let getData = (table) => {
-  table.each((taskObj) => {
+export const renderTask = (db) => {
+  db.each((taskObj) => {
     let tr = document.createElement("tr");
+    tr.setAttribute("id", taskObj.id);
 
     let tdTask = document.createElement("td");
     let tdPrio = document.createElement("td");
@@ -35,12 +37,12 @@ export let getData = (table) => {
     let tdUpDe = document.createElement("td");
 
     tdTask.innerHTML = taskObj.task;
-    tdTask.setAttribute('id', 'td-task')
+    tdTask.setAttribute("id", "td-task");
     tdPrio.innerHTML = taskObj.priority;
     tdDate.innerHTML = taskObj.date;
     tdTime.innerHTML = taskObj.time;
-    tdUpDe.innerHTML = `<i class="far fa-edit"></i>`;
-    tdUpDe.innerHTML += `<i class="fas fa-trash-alt"></i>`;
+    tdUpDe.innerHTML = `<i id="edit-task" class="far fa-edit"></i>`;
+    tdUpDe.innerHTML += `<i id="delete-task" class="fas fa-trash-alt"></i>`;
 
     tbody.appendChild(tr);
     tr.appendChild(tdTask);
@@ -49,4 +51,31 @@ export let getData = (table) => {
     tr.appendChild(tdTime);
     tr.appendChild(tdUpDe);
   });
+};
+
+// update task
+export const renderDataForUpdate = (db, id) => {
+  let taskId = parseInt(id);
+  localStorage.setItem('id', taskId)
+  db.get(taskId, (data) => {
+    form.task.value = data.task
+    form.priority.value = data.priority
+    form.date.value = data.date
+    form.time.value = data.time
+  });
+};
+
+export const updateTask = (db, id) => {
+  db.update(parseInt(id), {
+    task: form.task.value,
+    priority: form.priority.value,
+    date: form.date.value,
+    time:form.time.value,
+  })
+};
+
+// delete task
+export const deleteTask = (db, id) => {
+  let taskId = parseInt(id);
+  db.delete(taskId)
 };
